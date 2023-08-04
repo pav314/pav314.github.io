@@ -13,8 +13,8 @@
     }
 
     #copyButton {
-      width: 50%;
-      padding: 10px;
+      width: 100%;
+      padding: 20px;
       font-size: 16px;
       background-color: #007bff;
       color: #fff;
@@ -33,7 +33,7 @@
   <script>
     document.getElementById('copyButton').addEventListener('click', function() {
       copyToClipboard(getFormattedDatetime());
-      document.getElementById('copyButton').style.backgroundColor = '#28a745'; // Change color on click
+      document.getElementById('copyButton').style.backgroundColor = getRandomNeonColor();
     });
 
     function getFormattedDatetime() {
@@ -58,6 +58,12 @@
       textarea.select();
       document.execCommand('copy');
       document.body.removeChild(textarea);
+    }
+
+    function getRandomNeonColor() {
+      const neonColors = ['#ff00ff', '#39ff14', '#00ffff', '#ff1493', '#f4bb44', '#00ff00', '#ff4500'];
+      const randomIndex = Math.floor(Math.random() * neonColors.length);
+      return neonColors[randomIndex];
     }
   </script>
 </body>
