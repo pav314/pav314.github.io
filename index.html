@@ -29,6 +29,8 @@
 
     function copyToClipboard(text) {
       var textarea = document.createElement('textarea');
+      textarea.rows = "5"; // Set the number of rows
+      textarea.cols = "40"; // Set the number of columns
       textarea.value = text;
       document.body.appendChild(textarea);
       textarea.select();
