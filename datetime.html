@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copy Datetime to Clipboard</title>
+</head>
+<body>
+  <button id="copyButton">Copy Datetime to Clipboard</button>
+
+  <script>
+    document.getElementById('copyButton').addEventListener('click', function() {
+      copyToClipboard(getFormattedDatetime());
+      alert("Datetime copied to clipboard:\n" + getFormattedDatetime());
+    });
+
+    function getFormattedDatetime() {
+      var now = new Date();
+      var month = String(now.getMonth() + 1).padStart(2, '0');
+      var day = String(now.getDate()).padStart(2, '0');
+      var year = now.getFullYear();
+      var hours = now.getHours();
+      var minutes = String(now.getMinutes()).padStart(2, '0');
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      
+      // Convert to 12-hour format
+      hours = hours % 12 || 12;
+      
+      return `${month}-${day}-${year} ${hours}:${minutes} ${ampm}`;
+    }
+
+    function copyToClipboard(text) {
+      var textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+    }
+  </script>
+</body>
+</html>
