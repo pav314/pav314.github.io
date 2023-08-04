@@ -2,6 +2,30 @@
 <html>
 <head>
   <title>Copy Datetime to Clipboard</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    #copyButton {
+      width: 50%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #copyButton:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
   <button id="copyButton">Copy Datetime to Clipboard</button>
@@ -9,7 +33,7 @@
   <script>
     document.getElementById('copyButton').addEventListener('click', function() {
       copyToClipboard(getFormattedDatetime());
-      alert("Datetime copied to clipboard:\n" + getFormattedDatetime());
+      document.getElementById('copyButton').style.backgroundColor = '#28a745'; // Change color on click
     });
 
     function getFormattedDatetime() {
@@ -29,8 +53,6 @@
 
     function copyToClipboard(text) {
       var textarea = document.createElement('textarea');
-      textarea.rows = "5"; // Set the number of rows
-      textarea.cols = "40"; // Set the number of columns
       textarea.value = text;
       document.body.appendChild(textarea);
       textarea.select();
